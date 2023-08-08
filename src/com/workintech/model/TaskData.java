@@ -17,6 +17,18 @@ public class TaskData {
         carolsTasks = new HashSet<>();
     }
 
+    public void setAnnsTasks(Set<Task> annsTasks) {
+        this.annsTasks = annsTasks;
+    }
+
+    public void setBobsTasks(Set<Task> bobsTasks) {
+        this.bobsTasks = bobsTasks;
+    }
+
+    public void setCarolsTasks(Set<Task> carolsTasks) {
+        this.carolsTasks = carolsTasks;
+    }
+
     public Set<Task> getTasks(String employee) {
         switch (employee) {
             case ("ann"):
@@ -32,15 +44,17 @@ public class TaskData {
                 allTasks.addAll(carolsTasks);
                 return allTasks;
             default:
-                return new HashSet<>();
+                return null;
         }
     }
 
     // İki set'in birleşimini döndüren metot
-    public Set<Task> getUnion(Set<Task> set1, Set<Task> set2) {
-        Set<Task> union = new HashSet<>(set1);
-        union.addAll(set2);
-        return union;
+    public Set<Task> getUnion(Set<Task>... taskList) {
+        Set<Task> totals = new HashSet<>();
+        for ( Set<Task> tasks: taskList) {
+            totals.addAll(tasks);
+        }
+        return totals;
     }
 
     // İki set'in kesişimini döndüren metot
